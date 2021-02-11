@@ -23,7 +23,7 @@ var enemyAttack = 12;
 
 // function to start a new game
 var startGame = function() {
-    // reset player stats
+    // resets player stats
     playerHealth = 100;
     playerAttack = 10;
     playerMoney = 10;
