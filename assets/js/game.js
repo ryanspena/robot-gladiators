@@ -151,15 +151,26 @@ var startGame = function() {
     switch (shopOptionPrompt) {
       case 'refill':
       case 'REFILL':
+          if (playerMoney >= 7) {
         window.alert("Refilling player's health by 20 for 7 dollars.");
         playerHealth += 20;
         playerMoney -= 7;
+          }
+          else {
+              window.alert("You don't have enough money!");
+          }
+
         break;
       case 'upgrade':
       case 'UPGRADE':
+          if (playerMoney >= 7) {
         window.alert("Upgrading player's attack by 6 for 7 dollars.");
         playerAttack += 6;
         playerMoney -= 7;
+          }
+          else {
+              window.alert("You don't have enough money!"); 
+          }
         break;
       case 'leave':
       case 'LEAVE':
