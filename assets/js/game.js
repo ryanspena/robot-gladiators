@@ -22,12 +22,14 @@ var startGame = function() {
       if (playerInfo.health > 0) {
         // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
         window.alert('Welcome to Robot Gladiators! Round ' + (i + 1));
-  
+        
         // pick new enemy to fight based on the index of the enemy.names array
         var pickedEnemyObj = enemyInfo[i];
   
         // reset enemy.health before starting new fight
         pickedEnemyObj.health = randomNumber(40, 60);
+
+        console.log(pickedEnemyObj);
         //Math.floor(Math.random() * 21) + 40;
   
         // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the enemy.name parameter
@@ -177,14 +179,23 @@ var startGame = function() {
     }
   };
 
-var randomNumber = function(min, max) {
+  var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max - min + 1) + min);
 
     return value;
   };
-  
+
+  var getPlayerName = function() {
+    var name = "";
+    while (name === "" || name === null) {
+      name = prompt("What is your robot's name?");
+    }
+    console.log("Your robot's name is " + name);
+    return name;
+  };
+
   var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
@@ -194,26 +205,26 @@ var randomNumber = function(min, max) {
       this.attack = 10;
     }, 
     refillHealth: function() {
-      if (this.money >= 7) {
+      // if (this.money >= 7) {
         window.alert("Refilling player's health by 20 for 7 coins.");
       this.health += 20;
       this.money -+ 7;
-    }
-      else {
-        window.alert("You don't have enough money!");
-      }
+    // }
+    //   else {
+    //     window.alert("You don't have enough money!");
+    //   }
     },
     upgradeAttack: function() {
-      if (this.money >= 7) {
+      // if (this.money >= 7) {
         window.alert("Upgrading player's attack by 6 for 7 coins.");
       this.attack += 6;
-      this.money -= 7;
-    }
-    else {
-      window.alert("You don't have enough money!");
-    }
+    //   this.money -= 7;
+    // }
+    // else {
+    //   window.alert("You don't have enough money!");
+    // }
   }
-};
+  };
   
   var enemyInfo = [
     {
@@ -229,6 +240,11 @@ var randomNumber = function(min, max) {
       attack: randomNumber(10,14)
     }
   ];
+
+  console.log(enemyInfo);
+  console.log(enemyInfo[0]);
+  console.log(enemyInfo[0].name);
+  console.log(enemyInfo[0]['attack']);
   
   // start first game when page loads
   startGame();
