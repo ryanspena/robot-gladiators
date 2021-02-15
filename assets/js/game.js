@@ -136,7 +136,14 @@ var fight = function(enemy) {
       enemy.health = Math.max(0, enemy.health - damage);
       // enemy.health = Math.max(0, enemy.health - playerInfo.attack);
       console.log(
-        playerInfo.name + ' attacked ' + enemy.name + '. ' + enemy.name + ' now has ' + enemy.health + ' health remaining.'
+        playerInfo.name + 
+        ' attacked ' + 
+        enemy.name + 
+        '. ' + 
+        enemy.name + 
+        ' now has ' + 
+        enemy.health + 
+        ' health remaining.'
       );
   
       // check enemy's health
