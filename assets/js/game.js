@@ -75,9 +75,11 @@ if (promptFight === "" || promptFight === null) {
   window.alert("You need to provide a valid answer! Please try again.");
   return fightOrSkip();
 }
+
+  promptFight = promptFight.toLowerCase();
   
     // if player picks "skip" confirm and then stop the loop
-    if (promptFight === "skip" || promptFight === "SKIP") {
+    if (promptFight === "skip") {
       // confirm player wants to skip
       var confirmSkip = window.confirm("Are you sure you'd like to quit?");
   
@@ -85,10 +87,13 @@ if (promptFight === "" || promptFight === null) {
       if (confirmSkip) {
         window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
         // subtract money from playerMoney for skipping
-        playerInfo.playerMoney = playerInfo.money - 10;
-        shop();
+        playerInfo.playerMoney = Math.max(0, playerInfo.money - 10);
+
+        // return true if player wants to leave
+        return true;
       }
     }
+    return false;
   };
 
   // fight function (now with parameter for enemy's name)
