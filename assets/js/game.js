@@ -184,14 +184,16 @@ var fight = function(enemy) {
   var shop = function() {
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
-      'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
+      'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 for "REFILL", 2 for "UPGRADE", or 3 "LEAVE" to make a choice.'
     );
   
     // use switch case to carry out action
     switch (shopOptionPrompt) {
-      case "refill":
-      case 'REFILL':
+      case 1: 
         playerInfo.refillHealth();
+        break;
+      case 2:
+        playerInfo.upgradeAttack();
         break;
         //   if (playerInfo.money >= 7) {
         // window.alert("Refilling player's health by 20 for 7 dollars.");
@@ -201,26 +203,13 @@ var fight = function(enemy) {
         //   else {
         //       window.alert("You don't have enough money!");
         //   }
-      case 'upgrade':
-      case 'UPGRADE':
-        playerInfo.upgradeAttack();
+      case 3:
+        window.alert("Leaving the store.");
         break;
-        //   if (playerInfo.money >= 7) {
-        // window.alert("Upgrading player's attack by 6 for 7 dollars.");
-        // playerInfo.attack += 6;
-        // playerInfo.money -= 7;
-        //   }
-        //   else {
-        //       window.alert("You don't have enough money!"); 
-        //   }
-      case 'leave':
-      case 'LEAVE':
-        window.alert('Leaving the store.');
-        break;
-      default:
-        window.alert('You did not pick a valid option. Try again.');
-        shop();
-        break;
+        default:
+          window.alert("You did not pick a valid option. Try again.");
+          shop();
+          break;
     }
   };
 
